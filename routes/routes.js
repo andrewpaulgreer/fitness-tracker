@@ -3,12 +3,22 @@ const path = require("path");
 
 // clicked on new workout, and got cannot get /workout
 router.get("/exercise", (req, res) => {
-    res.sendFile(path.join(__dirname, "../public/exercise.html"))
+    const exPage = "../public/exercise.html"
+    res.sendFile(path.join(__dirname, exPage))
 })
 
 // clicked on the tacker dashboa, and said cannot get stats, needs to be linked
 router.get("/stats", (req, res) => {
-    res.sendFile(path.join(__dirname, "../public/stats.html"))
+    const statPage = "../public/stats.html"
+    res.sendFile(path.join(__dirname, statPage))
+})
+
+router.get("/api/workout", (req,res) => {
+
+})
+
+router.get("/api/workout/range", (req,res) => {
+
 })
 
 module.exports = router;

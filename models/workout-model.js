@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
+const opts = { toJSON: { virtuals: true } };
 const WorkoutSchema = new Schema({
     day: {
         type: Date,
@@ -24,7 +25,7 @@ const WorkoutSchema = new Schema({
                 required: "must enter a duration time"
             },
             weight: {
-                type: Number
+                type: Number,
             },
             reps: {
                 type: Number
@@ -37,7 +38,7 @@ const WorkoutSchema = new Schema({
             }
         }
     ]
-})
+}, opts)
 
 const Workout = mongoose.model("Workout", WorkoutSchema);
 module.exports = Workout;

@@ -14,6 +14,12 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
+const URI = process.env.MONGODB_URO || "mongodb://localhost/workout"
+mongoose.connect(URI, {
+  useUnifiedTopology: true,
+  useNewUrlParser: true,
+  useFindAndModify: false
+});
 
 // add in routes
 app.use(require("./routes/routes"));
