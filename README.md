@@ -24,6 +24,8 @@ run NPM i
 
 ## Usage
 
+Deployed Link: https://protected-brook-26375.herokuapp.com/
+
 YouTube Demonstration Link: https://youtu.be/rLmHYDxlD5Y
 
 Animated Gif of functional applicaiton, and screenshots of home page, and states page:
