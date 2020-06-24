@@ -31,6 +31,7 @@ router.get("/api/workouts", (req, res)=> {
     });
 });
 
+// make a post rout with the body fed in as the arguement
 router.post("/api/workouts", ({body},res) => {
     db.Workout.create(body)
     .then(dbData => {
@@ -41,7 +42,7 @@ router.post("/api/workouts", ({body},res) => {
 });
 
 
-// make API route with range
+// make API route to range with a find
 router.get("/api/workouts/range", (req,res) => {
     db.Workout.find({})
     .then(dbData => {
@@ -50,29 +51,20 @@ router.get("/api/workouts/range", (req,res) => {
         res.json(err)
     })
 })
-// router.post("/api/workouts/range", (req,res) => {
-//     Workout.create({})
-//     .then(dbData => {
-//         res.json(dbData)
-//     }).catch(err => {
-//         res.json(err)
-//     })
-// })
+
 // got a console error sying PUT with workouts/undefined, so I will need an ID too
 router.put("/api/workouts/:id", (req, res) => {
     db.Workout.updateOne(
-        {
-            "_id": req.params.id
-        },
-        {
-            // $inc: {"totalDuration": req.body.duration},
-            $push: {"exercises": req.body}
-        }, 
-         (err, updated) => {
+    {
+        "_id": req.params.id
+    },
+    {
+        $push: {"exercises": req.body}
+    }, 
+    (err, updated) => {
         if (err) res.status(500).json(err);
         res.json(updated);
-    }
-    )
+    });
 });
 
 module.exports = router;
