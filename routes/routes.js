@@ -59,13 +59,13 @@ router.get("/api/workouts/range", (req,res) => {
 //     })
 // })
 // got a console error sying PUT with workouts/undefined, so I will need an ID too
-router.put("api/workouts/:id", (req, res) => {
+router.put("/api/workouts/:id", (req, res) => {
     db.Workout.updateOne(
         {
             "_id": req.params.id
         },
         {
-            $inc: {"totalDuration": req.body.duration},
+            // $inc: {"totalDuration": req.body.duration},
             $push: {"exercises": req.body}
         }, 
          (err, updated) => {
